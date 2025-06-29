@@ -1,12 +1,35 @@
-# React + Vite
+# Task-Manager-App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a Task Manager App built using React, React Router, and localStorage.  
+It helps you create, update, delete, and search tasks efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React (with Hooks)
+- React Router DOM
+- Vite (for fast dev server and bundling)
+- Tailwind CSS (for styling)
+- localStorage (for persistent data)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Getting Started
+
+1. Clone the repository  
+2. Run `npm install`  
+3. Run `npm run dev` to start the dev server  
+4. Open `http://localhost:5173`
+
+---
+
+## Features
+
+- Add / Edit / Delete Tasks  
+- Search Tasks  
+- Sort by Task or Description  
+- Pagination  
+- Form Validation  
+- LocalStorage persistence
+
