@@ -13,7 +13,7 @@ const App = () => {
     resetForm,
     editIndex,
     setEditIndex,
-  } = useForm({ name: "", email: "" });
+  } = useForm({ task: "", description: "" });
 
   const [tableData, setTableData] = React.useState(() => {
     const saved = localStorage.getItem("taskData");
@@ -23,7 +23,7 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.name.trim() === "" || formData.email.trim() === "") return;
+    if (formData.task.trim() === "" || formData.description.trim() === "") return;
 
     let updatedData = [...tableData];
 
@@ -47,6 +47,15 @@ const App = () => {
 
   const [searchQuery, setSearchQuery] = React.useState("");
 
+ 
+  const filteredData = tableData.filter((task) => {
+    const taskText = typeof task.task === "string" ? task.task.toLowerCase() : "";
+    const descText = typeof task.description === "string" ? task.description.toLowerCase() : "";
+    const searchText = searchQuery.toLowerCase();
+
+    return taskText.includes(searchText) || descText.includes(searchText);
+  });
+
   return (
     <Router>
       <Routes>
@@ -54,11 +63,7 @@ const App = () => {
           path="/"
           element={
             <Home
-              tableData={tableData.filter(
-                (task) =>
-                  task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  task.email.toLowerCase().includes(searchQuery.toLowerCase())
-              )}
+              tableData={filteredData}
               handleDelete={handleDelete}
               setFormData={setFormData}
               setEditIndex={setEditIndex}
@@ -83,4 +88,6 @@ const App = () => {
 };
 
 export default App;
+
+
 

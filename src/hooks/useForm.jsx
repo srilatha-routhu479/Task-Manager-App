@@ -1,3 +1,4 @@
+// src/hooks/useForm.js
 import { useState } from "react";
 
 export default function useForm(initialValues) {
@@ -12,7 +13,7 @@ export default function useForm(initialValues) {
   };
 
   const resetForm = () => {
-    setFormData(initialValues);
+    setFormData({ ...initialValues }); 
     setEditIndex(null);
   };
 
@@ -22,6 +23,7 @@ export default function useForm(initialValues) {
     handleFormDataChange,
     resetForm,
     editIndex,
-    setEditIndex
+    setEditIndex,
   };
 }
+

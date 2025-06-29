@@ -20,14 +20,11 @@ const Home = ({
     navigate("/add");
   };
 
-
   const [currentPage, setCurrentPage] = useState(1);
   const tasksPerPage = 5;
 
-  //  Sorting state
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "" });
 
-  // Handle sorting
   const handleSort = (key) => {
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
@@ -36,7 +33,12 @@ const Home = ({
     setSortConfig({ key, direction });
   };
 
-  const sortedTasks = [...tableData].sort((a, b) => {
+   const filteredTasks = tableData.filter((task) =>
+    task.task.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    task.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const sortedTasks = [...filteredTasks].sort((a, b) => {
     if (!sortConfig.key) return 0;
     const aVal = a[sortConfig.key].toLowerCase();
     const bVal = b[sortConfig.key].toLowerCase();
@@ -46,11 +48,10 @@ const Home = ({
     return 0;
   });
 
-  
   const indexOfLastTask = currentPage * tasksPerPage;
   const indexOfFirstTask = indexOfLastTask - tasksPerPage;
   const currentTasks = sortedTasks.slice(indexOfFirstTask, indexOfLastTask);
-  const totalPages = Math.ceil(tableData.length / tasksPerPage);
+  const totalPages = Math.ceil(filteredTasks.length / tasksPerPage);
 
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
@@ -76,7 +77,7 @@ const Home = ({
 
       <input
         type="text"
-        placeholder="Search by name or email..."
+        placeholder="Search by task or description..."
         className="w-full border px-4 py-2 rounded mb-4"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
@@ -118,6 +119,7 @@ const Home = ({
 };
 
 export default Home;
+
 
 
 

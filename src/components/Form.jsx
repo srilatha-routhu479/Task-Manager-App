@@ -10,25 +10,25 @@ const Form = ({ handleForDataChange, handleSubmit, formData }) => {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block mb-1 font-medium">Name</label>
+          <label className="block mb-1 font-medium">Task</label>
           <input
             type="text"
             className="w-full border rounded p-2 text-sm md:text-base"
-            placeholder="Enter name"
-            value={formData.name}
-            onChange={(e) => handleForDataChange("name", e.target.value)}
+            placeholder="Enter task"
+            value={formData.task}
+            onChange={(e) => handleForDataChange("task", e.target.value)}
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Email</label>
+          <label className="block mb-1 font-medium">Description</label>
           <input
-            type="email"
+            type="text"
             className="w-full border rounded p-2 text-sm md:text-base"
-            placeholder="Enter email"
-            value={formData.email}
-            onChange={(e) => handleForDataChange("email", e.target.value)}
+            placeholder="Enter description"
+            value={formData.description}
+            onChange={(e) => handleForDataChange("description", e.target.value)}
             required
           />
         </div>
@@ -45,5 +45,6 @@ const Form = ({ handleForDataChange, handleSubmit, formData }) => {
 };
 
 export default Form;
+
 
 

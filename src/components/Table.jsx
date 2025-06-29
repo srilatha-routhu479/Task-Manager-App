@@ -12,18 +12,18 @@ const Table = ({ tableData, handleEdit, handleDelete, handleSort, sortConfig }) 
             <tr className="bg-gray-100 text-sm md:text-base">
               <th
                 className="border p-2 cursor-pointer"
-                onClick={() => handleSort("name")}
+                onClick={() => handleSort("task")}
               >
-                Name{" "}
-                {sortConfig.key === "name" &&
+                Task{" "}
+                {sortConfig.key === "task" &&
                   (sortConfig.direction === "asc" ? "↑" : "↓")}
               </th>
               <th
                 className="border p-2 cursor-pointer"
-                onClick={() => handleSort("email")}
+                onClick={() => handleSort("description")}
               >
-                Email{" "}
-                {sortConfig.key === "email" &&
+                Description{" "}
+                {sortConfig.key === "description" &&
                   (sortConfig.direction === "asc" ? "↑" : "↓")}
               </th>
               <th className="border p-2">Actions</th>
@@ -39,8 +39,8 @@ const Table = ({ tableData, handleEdit, handleDelete, handleSort, sortConfig }) 
             ) : (
               tableData.map((data, idx) => (
                 <tr key={idx} className="hover:bg-gray-50 text-sm md:text-base">
-                  <td className="border px-4 py-2">{data.name}</td>
-                  <td className="border px-4 py-2">{data.email}</td>
+                  <td className="border px-4 py-2">{data.task}</td>
+                  <td className="border px-4 py-2">{data.description}</td>
                   <td className="border px-4 py-2">
                     <button
                       className="bg-blue-500 text-white px-3 py-1 rounded mr-2 hover:bg-blue-600"
@@ -66,4 +66,5 @@ const Table = ({ tableData, handleEdit, handleDelete, handleSort, sortConfig }) 
 };
 
 export default Table;
+
 
